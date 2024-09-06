@@ -1,4 +1,4 @@
-## Phrasal Verbs Today (Imersão DEV com Google Gemini
+## Phrasal Verbs Today (Imersão DEV com Google Gemini)
 
 ### Sobre o Projeto
 
