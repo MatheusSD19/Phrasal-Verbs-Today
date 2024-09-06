@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"> <!-- Arquivo de formação da Página -->
+  <title>Phrasal Verbs Today</title>
+  <link rel="shortcut icon" href="icon.png"> <!-- Pedi para o Gemini uma instrução de como colocar um icone. Fiz o icone com AI -->
+</head>
+<body>
+  <header>
+    <h1>Phrasal Verbs <span style="color: #138b45;">Today</span></h1> <!-- Gemini me ensinou a separar para eu poder mudar a cor da palavra "Totay" -->
+  </header>
+  <main>
+    <section>
+      <section>
+        <input type="search" id="search-input" placeholder="Search for a Phrasal Verb"> <!-- Caixa de Pesquisa -->
+        <div>
+          <button class="SearchButton" id="search-button" onclick="search()">Search</button> <!-- Botão para realizar as Pesquisas -->
+          <button class="LuckyButton" id="lucky-button" onclick="lucky()">I'm Feeling Lucky</button> <!-- Botão para randomizar um resultado -->
+        </div>
+    </section>
+    <section>
+      <p> </p>
+      <div class="resultados-pesquisa" id="resultados-pesquisa"> <!-- Onde será exibido os resultados da Pesquisa -->
+        </div>
+    </section>
+  </main>
+  <footer>
+    <p>2024 Imersão DEV</p>
+    <p>&copy; Matheus S.D.</p>
+  </footer>
+  <script src="dados.js"></script> <!-- Banco de Dados -->
+  <script src="app.js"></script> <!-- Funcionalidade da Página -->
+  <script src="applucky.js"></script> <!-- Funcionalidade do Botão Lucky -->
+  <script src="enterButton.js"></script> <!-- Funcionalidade da Tecla Enter (O que mais me deu trabalho kkkk) -->
+</body>
+</html>
