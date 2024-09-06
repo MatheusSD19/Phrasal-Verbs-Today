@@ -26,3 +26,5 @@
 ### Observações
 
 Este projeto foi criado como parte de um curso intensivo de desenvolvimento web, com foco na aplicação prática de tecnologias fundamentais como *HTML, CSS e JavaScript*. O banco de dados atual de phrasal verbs pode ser continuamente expandido e aprimorado para melhor atender às necessidades dos usuários.
+
+Link Vercel: https://phrasal-verbs-today.vercel.app
