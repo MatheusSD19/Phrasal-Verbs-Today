@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="card">
+    <h2>Manutenção de Margens</h2>
+    <form method="post" class="grid-form">
+      <label>
+        Família
+        <select name="family_id">
+          <option value="">Selecionar</option>
+          {% for family in families %}
+            <option value="{{ family.id }}">{{ family.name }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>
+        Categoria (opcional)
+        <select name="category_id">
+          <option value="">Selecionar</option>
+          {% for category in categories %}
+            <option value="{{ category.id }}">
+              {{ category.family_name }} - {{ category.name }}
+            </option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>
+        Margem (%)
+        <input type="number" step="0.01" name="margin_percent" required />
+      </label>
+      <button type="submit">Salvar margem</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h3>Margens cadastradas</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Família</th>
+            <th>Categoria</th>
+            <th>Margem (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for margin in margins %}
+            <tr>
+              <td>{{ margin.family_name or "-" }}</td>
+              <td>{{ margin.category_name or "Todas" }}</td>
+              <td>{{ margin.margin_percent }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+{% endblock %}

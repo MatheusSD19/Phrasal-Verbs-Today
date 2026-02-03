@@ -1,30 +1,42 @@
-## Phrasal Verbs Today (Imersão DEV com Google Gemini)
+## Sistema de Gestão Mercadológica e Margens de Lucro
 
 ### Sobre o Projeto
 
-**Phrasal Verbs Today** é um site educacional desenvolvido durante a Imersão DEV da Alura, com o objetivo de facilitar o aprendizado de phrasal verbs em inglês. A plataforma oferece aos usuários a possibilidade de buscar por phrasal verbs específicos ou explorar novas expressões de maneira aleatória, tornando o estudo do idioma mais dinâmico e interativo.
+Aplicação local para importar uma estrutura mercadológica de produtos de supermercado a partir de PDF,
+organizar dados em banco SQLite e permitir consulta rápida da classificação completa e das margens de lucro.
 
 ### Funcionalidades
 
-- **Busca Personalizada:** Permite que o usuário digite um phrasal verb na caixa de pesquisa e acesse rapidamente informações como significado, exemplos de uso, e outros detalhes relevantes.
-- **Exploração Aleatória:** A função *"I'm Feeling Lucky"* seleciona um phrasal verb aleatório do banco de dados, incentivando o aprendizado espontâneo e divertido.
-- **Interface Amigável:** O design do site é intuitivo e minimalista, garantindo uma experiência de navegação fácil e focada.
-- **Banco de Dados Extensivo:** Conta com uma coleção diversificada de phrasal verbs, acompanhados de seus significados e exemplos práticos de uso.
+- **Importação de PDF:** Extração automática de famílias, categorias, subcategorias, produtos e margens.
+- **Banco local:** Armazenamento em SQLite com histórico de alterações e backup automático do banco.
+- **Consulta inteligente:** Busca por nome, código, família ou categoria com margem sugerida e margem editada.
+- **Gestão de margens:** Tela dedicada para manutenção das margens por família e/ou categoria.
+- **Exportação:** Geração de planilha Excel com a classificação e margens.
 
 ### Tecnologias Utilizadas
 
-- **HTML:** Estruturação do conteúdo da página.
-- **CSS:** Estilização visual e layout responsivo.
-- **JavaScript:** Implementação da lógica da aplicação, incluindo a busca dinâmica e a funcionalidade de seleção aleatória.
+- **Python / Flask:** Interface web simples e responsiva.
+- **SQLite:** Banco local leve.
+- **pdfplumber:** Extração de texto do PDF.
+- **pandas / openpyxl:** Exportação de dados para Excel.
 
-### Próximos Passos
+### Como executar localmente
 
-- **Expansão do Banco de Dados:** Incrementar o número de phrasal verbs e adicionar informações adicionais.
-- **Melhoria da Interface:** Desenvolver novas funcionalidades e aprimorar a experiência do usuário.
-- **Tradução Multilíngue:** Tornar o site acessível em outros idiomas, ampliando o alcance global.
+1. Instale as dependências:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   ```
+2. Execute o servidor:
+   ```bash
+   python app.py
+   ```
+3. Acesse `http://localhost:5000`.
 
 ### Observações
 
-Este projeto foi criado como parte de um curso intensivo de desenvolvimento web, com foco na aplicação prática de tecnologias fundamentais como *HTML, CSS e JavaScript*. O banco de dados atual de phrasal verbs pode ser continuamente expandido e aprimorado para melhor atender às necessidades dos usuários.
-
-Link Vercel: https://phrasal-verbs-today.vercel.app
+- O banco `data.db` é criado automaticamente na primeira execução.
+- Backups automáticos são salvos na pasta `backups/` a cada importação ou alteração manual.
+- O parser de PDF usa padrões simples (Família, Categoria, Subcategoria, Código - Produto). Ajuste caso o
+  layout do seu PDF seja diferente.
