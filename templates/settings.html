@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="card">
+    <h2>Configurações</h2>
+    <p class="hint">Histórico de importações e alterações recentes.</p>
+  </section>
+
+  <section class="card">
+    <h3>Importações</h3>
+    <ul class="list">
+      {% for item in imports %}
+        <li>{{ item.created_at }} - {{ item.details }}</li>
+      {% else %}
+        <li>Nenhuma importação registrada.</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="card">
+    <h3>Histórico recente</h3>
+    <ul class="list">
+      {% for item in history %}
+        <li>{{ item.created_at }} - {{ item.entity_type }} - {{ item.details }}</li>
+      {% else %}
+        <li>Nenhuma alteração registrada.</li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}

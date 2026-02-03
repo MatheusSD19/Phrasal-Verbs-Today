@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="card">
+    <h2>Importação de PDF</h2>
+    <form action="{{ url_for('upload_pdf') }}" method="post" enctype="multipart/form-data">
+      <input type="file" name="pdf_file" accept="application/pdf" required />
+      <button type="submit">Importar</button>
+    </form>
+    <p class="hint">
+      O PDF deve conter estrutura mercadológica e anexo de margens. O sistema tenta reconhecer
+      famílias, categorias, subcategorias e produtos automaticamente.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Consulta</h2>
+    <form class="search-form" method="get" action="{{ url_for('index') }}">
+      <input
+        type="text"
+        name="query"
+        placeholder="Nome ou código do produto"
+        value="{{ query }}"
+      />
+      <input type="text" name="family" placeholder="Família" value="{{ family }}" />
+      <input type="text" name="category" placeholder="Categoria" value="{{ category }}" />
+      <button type="submit">Buscar</button>
+      <a class="secondary" href="{{ url_for('export_excel') }}">Exportar Excel</a>
+    </form>
+
+    {% if results %}
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Produto</th>
+              <th>Família</th>
+              <th>Categoria</th>
+              <th>Subcategoria</th>
+              <th>Margem sugerida</th>
+              <th>Margem editada</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in results %}
+              <tr>
+                <td>{{ row.code or "-" }}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ row.family_name or "-" }}</td>
+                <td>{{ row.category_name or "-" }}</td>
+                <td>{{ row.subcategory_name or "-" }}</td>
+                <td>{{ row.suggested_margin or "-" }}</td>
+                <td>{{ row.margin_override or "-" }}</td>
+                <td>
+                  <form
+                    class="inline-form"
+                    action="{{ url_for('update_product_margin', product_id=row.id, **request.args) }}"
+                    method="post"
+                  >
+                    <input
+                      type="number"
+                      step="0.01"
+                      name="margin_override"
+                      placeholder="Editar margem"
+                    />
+                    <button type="submit">Salvar</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p class="hint">Realize uma busca para exibir resultados.</p>
+    {% endif %}
+  </section>
+{% endblock %}
